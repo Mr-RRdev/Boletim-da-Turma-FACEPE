@@ -1,0 +1,282 @@
+:root {
+  --bg: #f9f3e6;
+  --bgtnc: #dcdcdc;
+  --bgthovereven: #c8c8c8;
+  --bgthoverodd: #e6edf7;
+  --bgh: #2c3e50;
+  --panel: #fff6e0;
+  --primary: #1a365d;
+  --primary-hover: #2e86de;
+  --text: #1a365d;
+  --white: #ffffff;
+  --border: rgba(26, 54, 93, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--primary);
+  font-family: "Inter", sans-serif;
+  margin: 0;
+}
+
+header {
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  text-align: center;
+  padding: clamp(24px, 5vw, 40px) 20px;
+  margin: 24px auto 30px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(26, 54, 93, 0.16);
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  align-items: start;
+}
+
+header h1 {
+  margin: 0;
+  color: var(--bg);
+  font-size: clamp(2rem, 3vw, 3rem);
+  letter-spacing: 0.5px;
+}
+
+section {
+  background-color: var(--panel);
+  margin-bottom: 40px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+}
+
+label {
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--border);
+  padding: 6px 4px;
+  color: var(--text);
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-bottom-color: var(--primary);
+}
+
+input:not(:focus):hover {
+  border-bottom-color: var(--primary-hover);
+}
+
+button {
+  background-color: var(--primary);
+  color: var(--bg);
+  border: none;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: fit-content;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: var(--bgh);
+  color: var(--white);
+}
+
+th button {
+  background: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+  width: auto;
+  font: inherit;
+  cursor: pointer;
+}
+
+th button:hover {
+  background: transparent;
+  text-decoration: underline;
+}
+
+th {
+  font-weight: 700;
+  text-align: left;
+  padding: 12px;
+}
+
+tbody tr {
+  background-color: var(--white);
+}
+
+tbody tr:nth-child(even) td {
+  background-color: var(--bgtnc);
+}
+
+/* Linhas onde os dados dos alunos vão aparecer */
+td {
+  padding: 12px;
+  color: var(--text);
+  /* Linha fina simulando a pauta do caderno para cada aluno cadastrado */
+  border-bottom: 1px solid var(--border);
+}
+
+/* Efeito visual: destaca a linha do aluno quando você passa o mouse por cima */
+tbody tr:nth-child(even):hover td {
+  background-color: var(--bgthovereven);
+}
+
+tbody tr:nth-child(odd):hover td {
+  background-color: var(--bgthoverodd);
+}
+
+footer {
+  background-color: transparent;
+  padding: 12px 18px;
+  gap: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  margin-top: 24px;
+}
+
+.resumo-turma {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 12px 0 20px;
+}
+
+.indicador-turma {
+  margin: 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--primary-hover);
+  border-radius: 0 6px 6px 0;
+  background-color: rgba(255, 255, 255, 0.65);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.badge-situacao {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.aprovado {
+  background-color: #e5f4e8;
+  color: #246b3a;
+  border-color: #b9dfc3;
+}
+
+.recuperacao {
+  background-color: #fff3cd;
+  color: #805b00;
+  border-color: #f0d98c;
+}
+
+.reprovado {
+  background-color: #fde8e7;
+  color: #a4312b;
+  border-color: #efc0bd;
+}
+
+.table-wrapper {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.github-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.link-github {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+.link-github:hover {
+  text-decoration: underline;
+}
+.dev-cat {
+  width: 70px;
+  height: auto;
+}
+.creditos {
+  font-size: 14px;
+  color: var(--text);
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .resumo-turma {
+    grid-template-columns: 1fr;
+  }
+
+  #tabela-alunos {
+    min-width: 560px;
+  }
+
+  footer {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+}
