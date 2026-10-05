@@ -1,37 +1,39 @@
-# Boletim da Turma
+[English](README.md) | [Português](README.pt-BR.md)
 
-Aplicação web para cadastrar alunos, calcular médias e acompanhar os resultados da turma. Projeto final da disciplina de Introdução à Programação da FACEPE, desenvolvido com HTML, CSS e JavaScript, sem frameworks.
+# Class Gradebook (Boletim da Turma)
 
-## Funcionalidades
+A responsive web app for registering students, calculating grades, and viewing class results. Developed as a final project for FACEPE's Introduction to Programming course using vanilla HTML, CSS, and JavaScript.
 
-- Cadastro de alunos com nome e três notas entre 0 e 10.
-- Cálculo da média individual e classificação: Aprovado (média a partir de 7), Recuperação (a partir de 4) ou Reprovado (abaixo de 4).
-- Resumo com a média geral da turma e os alunos com a menor e a maior média.
-- Busca de alunos pelo nome.
-- Ordenação por nome, média ou situação. Clique novamente no mesmo cabeçalho para inverter a ordem.
-- Remoção individual de alunos ou limpeza de toda a turma.
-- Salvamento dos dados no `localStorage` do navegador.
-- Layout responsivo para telas menores.
+## Features
 
-## Como executar
+- Register students with a name and three grades from 0 to 10.
+- Calculate each student's average and classify the result as Pass (Aprovado, 7 or higher), Recovery (Recuperação, from 4 to below 7), or Fail (Reprovado, below 4).
+- View the class average and the students with the highest and lowest averages.
+- Search for students by name.
+- Sort by name, average, or status. Click the same column header again to reverse the order.
+- Remove individual students or clear the entire class.
+- Save student data in the browser's `localStorage`.
+- Responsive layout for smaller screens.
 
-Não é necessário instalar dependências nem executar um processo de compilação. Abra o arquivo `index.html` em um navegador ou use a extensão Live Server do VS Code.
+## Getting Started
 
-Os dados ficam salvos no navegador em que foram cadastrados. Eles não são sincronizados entre dispositivos ou navegadores.
+No dependencies or build step are required. Open `index.html` in a browser, or run the project with the VS Code Live Server extension.
 
-## Tecnologias
+Data is stored in the browser where it was entered and is not synced across browsers or devices.
 
-- **HTML5** para a estrutura da página.
-- **CSS3** para estilos e layout responsivo.
-- **JavaScript** para validações, cálculos, busca, ordenação e armazenamento local.
+## Technologies
 
-## Arquivos principais
+- **HTML5** for page structure.
+- **CSS3** for styling and responsive layout.
+- **JavaScript** for validation, calculations, search, sorting, and local storage.
 
-- `index.html`: estrutura da aplicação e tabela de resultados.
-- `style.css`: aparência e regras para telas menores.
-- `script.js`: cadastro, validação, cálculos, busca, ordenação e persistência dos dados.
-- `img/dev-cat2.avif`: imagem exibida no rodapé.
+## Project Files
 
-## Autor
+- `index.html`: application structure and results table.
+- `style.css`: visual styles and responsive rules.
+- `script.js`: student registration, validation, calculations, search, sorting, and data persistence.
+- `img/dev-cat2.avif`: image displayed in the footer.
 
-Desenvolvido por **Renato Oliveira Galindo Rodrigues** em 2026.
+## Author
+
+Developed by **Renato Oliveira Galindo Rodrigues** in 2026.
