@@ -83,6 +83,11 @@ input {
   font-size: 16px;
   outline: none;
   transition: border-color 0.2s;
+  width: 100%;
+}
+
+input[type="number"]{
+  width: 110px;
 }
 
 input:focus {
