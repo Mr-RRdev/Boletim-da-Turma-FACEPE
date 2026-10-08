@@ -1,64 +1,121 @@
+/* ==========================================================================
+   1. VARIÁVEIS (DESIGN SYSTEM)
+   ========================================================================== */
 :root {
-  --bg: #f9f3e6;
-  --bgtnc: #dcdcdc;
-  --bgthovereven: #c8c8c8;
-  --bgthoverodd: #e6edf7;
-  --bgh: #2c3e50;
-  --panel: #fff6e0;
-  --primary: #1a365d;
-  --primary-hover: #2e86de;
-  --text: #1a365d;
+  /* --- Cores Base & Layout --- */
+  --bg-main: #f9f3e6;
+  --panel-bg: #fff6e0;
   --white: #ffffff;
-  --border: rgba(26, 54, 93, 0.15);
+  --white-rgb: 255, 255, 255;
+  --warning-color: #a4312b;
+
+  /* --- Cores Primárias e Canais RGB --- */
+  --primary-rgb: 26, 54, 93;          /* #1a365d */
+  --primary-hover-rgb: 46, 134, 222;   /* #2e86de */
+  
+  --primary: rgb(var(--primary-rgb));
+  --primary-hover: rgb(var(--primary-hover-rgb));
+
+  --border-color: rgba(var(--primary-rgb), 0.15);
+
+  /* --- Botão de Limpeza / Ação Destrutiva --- */
+  --btn-limpeza-rgb: 164, 49, 43;      /* #a4312b */
+  --btn-limpeza: rgb(var(--btn-limpeza-rgb));
+  --btn-limpeza-bg: #fde8e7;
+  --btn-limpeza-border: #efc0bd;
+
+  /* --- Tabela --- */
+  --table-header-bg: #2c3e50;
+  --table-row-even-bg: #dcdcdc;
+  --table-row-even-hover: #c8c8c8;
+  --table-row-even-hover-rgb: rgb(var(--table-row-even-hover));
+  --table-row-odd-hover: #e6edf7;
+  --table-row-odd-hover-rgb: rgb(var(--table-row-odd-hover));
+
+  /* --- Badges de Situação (Status) --- */
+  /* Aprovado */
+  --status-aprovado-bg: #e5f4e8;
+  --status-aprovado-border: #b9dfc3;
+  --status-aprovado-text: #246b3a;
+
+  /* Recuperação */
+  --status-recuperacao-bg: #fff3cd;
+  --status-recuperacao-border: #f0d98c;
+  --status-recuperacao-text: #805b00;
+
+  /* Reprovado */
+  --status-reprovado-bg: #fde8e7;
+  --status-reprovado-border: #efc0bd;
+  --status-reprovado-text: #a4312b;
 }
 
+/* ==========================================================================
+   2. RESET & BASE
+   ========================================================================== */
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: var(--bg);
+  margin: 0;
+  background-color: var(--bg-main);
   color: var(--primary);
   font-family: "Inter", sans-serif;
-  margin: 0;
 }
 
+/* ==========================================================================
+   3. LAYOUT PRINCIPAL
+   ========================================================================== */
 header {
   width: calc(100% - 40px);
   max-width: 1200px;
-  text-align: center;
-  padding: clamp(24px, 5vw, 40px) 20px;
   margin: 24px auto 30px;
+  padding: clamp(24px, 5vw, 40px) 20px;
   background: linear-gradient(135deg, var(--primary), var(--primary-hover));
   border-radius: 16px;
-  box-shadow: 0 10px 24px rgba(26, 54, 93, 0.16);
+  box-shadow: 0 10px 24px rgba(var(--primary-rgb), 0.16);
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  color: var(--bg-main);
+  font-size: clamp(2rem, 3vw, 3rem);
+  letter-spacing: 0.5px;
 }
 
 main {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 32px;
+  align-items: start;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  align-items: start;
-}
-
-header h1 {
-  margin: 0;
-  color: var(--bg);
-  font-size: clamp(2rem, 3vw, 3rem);
-  letter-spacing: 0.5px;
 }
 
 section {
-  background-color: var(--panel);
   margin-bottom: 40px;
   padding: 20px;
-  border: 1px solid var(--border);
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
 }
 
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 12px 18px;
+  background-color: transparent;
+  border-top: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   4. FORMULÁRIOS E BOTÕES
+   ========================================================================== */
 form {
   display: flex;
   flex-direction: column;
@@ -67,124 +124,158 @@ form {
 }
 
 label {
-  font-weight: 600;
-  color: var(--text);
   display: flex;
   flex-direction: column;
   gap: 4px;
+  font-weight: 600;
 }
 
 input {
+  width: 100%;
+  padding: 6px 4px;
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid var(--border);
-  padding: 6px 4px;
-  color: var(--text);
+  border-bottom: 2px solid var(--border-color);
+  color: inherit;
   font-size: 16px;
   outline: none;
-  transition: border-color 0.2s;
-  width: 100%;
+  transition: all 0.3s;
 }
 
-input[type="number"]{
+input[type="number"] {
   width: 110px;
 }
 
 input:focus {
   border-bottom-color: var(--primary);
+  padding-left: 8px;
+  filter: drop-shadow(0 2px 2px rgba(var(--primary-hover-rgb), 0.5));
 }
 
 input:not(:focus):hover {
   border-bottom-color: var(--primary-hover);
+  filter: drop-shadow(0 2px 3px rgba(var(--primary-hover-rgb), 0.5));
 }
 
 button {
-  background-color: var(--primary);
-  color: var(--bg);
-  border: none;
+  width: fit-content;
+  margin-top: 6px;
   padding: 10px 16px;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 8px;
+  color: var(--bg-main);
   font-size: 14px;
   font-weight: 600;
-  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s;
-  width: fit-content;
+  transition: all 0.3s;
 }
 
 button:hover {
+  border-radius: 12px;
   background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px 4px rgba(var(--primary-hover-rgb), 0.4);
+}
+
+button:active {
+  border-radius: 8px;
+  transform: translateY(0px);
+  box-shadow: 0 0 12px 2px rgba(var(--primary-hover-rgb), 0.3);
+}
+
+#btn-limpar-tudo {
+  margin-top: 7px;
+  background-color: transparent;
+  color: var(--btn-limpeza);
+  border: 1px solid var(--btn-limpeza-border);
+}
+
+#btn-limpar-tudo:hover {
+  background-color: var(--btn-limpeza-bg);
+  color: var(--btn-limpeza);
+  box-shadow: 0 2px 8px rgba(var(--btn-limpeza-rgb), 0.15);
+}
+
+/* ==========================================================================
+   5. TABELAS
+   ========================================================================== */
+.table-wrapper {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 table {
   width: 100%;
+  margin-top: 15px;
   border-collapse: separate;
   border-spacing: 0;
-  margin-top: 15px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   overflow: hidden;
 }
 
 thead {
-  background-color: var(--bgh);
+  background-color: var(--table-header-bg);
   color: var(--white);
 }
 
+th {
+  padding: 12px;
+  font-weight: 700;
+  text-align: left;
+}
+
 th button {
-  background: transparent;
-  color: inherit;
-  border: none;
-  padding: 0;
   width: auto;
+  padding: 5px 10px;
+  background: transparent;
+  border: none;
+  color: inherit;
   font: inherit;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 th button:hover {
   background: transparent;
-  text-decoration: underline;
-}
-
-th {
-  font-weight: 700;
-  text-align: left;
-  padding: 12px;
-}
-
-tbody tr {
-  background-color: var(--white);
+  background-color: rgba(var(--white-rgb), 0.15);
+  box-shadow: 0 0 12px 1px rgba(var(--white-rgb), 0.2);
 }
 
 tbody tr:nth-child(even) td {
-  background-color: var(--bgtnc);
+  background-color: var(--table-row-even-bg);
 }
 
-/* Linhas onde os dados dos alunos vão aparecer */
-td {
-  padding: 12px;
-  color: var(--text);
-  /* Linha fina simulando a pauta do caderno para cada aluno cadastrado */
-  border-bottom: 1px solid var(--border);
+tbody tr:nth-child(odd) td {
+  background-color: var(--white);
 }
 
-/* Efeito visual: destaca a linha do aluno quando você passa o mouse por cima */
 tbody tr:nth-child(even):hover td {
-  background-color: var(--bgthovereven);
+  background-color: var(--table-row-even-hover);
 }
 
 tbody tr:nth-child(odd):hover td {
-  background-color: var(--bgthoverodd);
+  background-color: var(--table-row-odd-hover);
 }
 
-footer {
-  background-color: transparent;
-  padding: 12px 18px;
-  gap: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid var(--border);
-  margin-top: 24px;
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+  transition: all .3s;
+}
+
+/* ==========================================================================
+   6. COMPONENTES E BADGES
+   ========================================================================== */
+.warning {
+  color: var(--warning-color);
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 8px;
+  min-height: 20px;
 }
 
 .resumo-turma {
@@ -197,10 +288,9 @@ footer {
 .indicador-turma {
   margin: 0;
   padding: 10px 12px;
+  background-color: rgba(var(--white-rgb), 0.65);
   border-left: 3px solid var(--primary-hover);
   border-radius: 0 6px 6px 0;
-  background-color: rgba(255, 255, 255, 0.65);
-  color: var(--text);
   font-weight: 600;
 }
 
@@ -216,55 +306,58 @@ footer {
 }
 
 .aprovado {
-  background-color: #e5f4e8;
-  color: #246b3a;
-  border-color: #b9dfc3;
+  background-color: var(--status-aprovado-bg);
+  border-color: var(--status-aprovado-border);
+  color: var(--status-aprovado-text);
 }
 
 .recuperacao {
-  background-color: #fff3cd;
-  color: #805b00;
-  border-color: #f0d98c;
+  background-color: var(--status-recuperacao-bg);
+  border-color: var(--status-recuperacao-border);
+  color: var(--status-recuperacao-text);
 }
 
 .reprovado {
-  background-color: #fde8e7;
-  color: #a4312b;
-  border-color: #efc0bd;
+  background-color: var(--status-reprovado-bg);
+  border-color: var(--status-reprovado-border);
+  color: var(--status-reprovado-text);
 }
 
-.table-wrapper {
-  min-width: 0;
-  max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
+/* GitHub e Créditos */
 .github-container {
   display: flex;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
 }
+
 .link-github {
-  color: var(--text);
-  text-decoration: none;
+  color: var(--primary);
   font-size: 14px;
   font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s;
 }
+
 .link-github:hover {
-  text-decoration: underline;
+  cursor: pointer;
+  color: var(--primary-hover);
 }
+
 .dev-cat {
   width: 70px;
   height: auto;
 }
+
 .creditos {
+  font-style: italic;
   font-size: 14px;
-  color: var(--text);
   opacity: 0.6;
 }
 
+/* ==========================================================================
+   7. MEDIA QUERIES
+   ========================================================================== */
 @media (max-width: 768px) {
   main {
     grid-template-columns: 1fr;
